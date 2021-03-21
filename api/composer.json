@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Citsk\\Controllers\\": "./citsk/application/Controllers",
+      "Citsk\\Models\\": "./citsk/application/Models",
+      "Citsk\\Interfaces\\": "./citsk/application/Interfaces",
+      "Citsk\\Exceptions\\": "./citsk/application/Exceptions",
+      "Citsk\\Library\\": "./citsk/application/Library"
+    },
+    "files": [
+      "./citsk/config/environment.php"
+    ]
+  }
+}
