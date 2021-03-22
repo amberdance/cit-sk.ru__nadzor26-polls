@@ -1,6 +1,13 @@
 <template>
-  <div :class="$style.wrapper">
-    <div>Рейтинг управляющих компаний Ставропольского края</div>
+  <div :class="$style.wrapper" @click="$router.push('/home')">
+    <div>
+      <span>Рейтинг управляющих компаний Ставропольского края</span>
+      <el-divider direction="vertical" />
+      <span
+        >Управление Ставропольского края - государственная жилищная
+        инспекция</span
+      >
+    </div>
     <img src="../../assets/logo.png" />
   </div>
 </template>
@@ -18,6 +25,8 @@
   background-color: #23497b;
   min-height: 60px;
   color: white;
+  cursor: pointer;
+  font-size: 15px;
 }
 .wrapper img {
   height: 55px;

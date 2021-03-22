@@ -4,8 +4,14 @@ import Vue from "vue";
 import axios from "axios";
 import router from "../router";
 import { API_BASE_URL } from "../config";
+import { responseManage, errorManage } from "../utils/responseManage";
 
 axios.defaults.baseURL = API_BASE_URL;
+
+axios.interceptors.response.use(
+  response => responseManage(response),
+  error => errorManage(error)
+);
 
 Plugin.install = Vue => {
   Vue.prototype.$isHomePage = () =>

@@ -62,11 +62,13 @@ body {
 .text-gray {
   color: gray;
 }
+.table_wrapper {
+  padding: 1rem 0;
+}
 .table_wrapper th {
-  font-family: "Noto Sans", sans-serif;
   color: #ffffff;
   font-weight: normal;
-  background-color: #58a76d !important;
+  background-color: #23497b !important;
   border-right: 1px #ffffff solid;
   padding: 0.6rem 0 !important;
   text-transform: uppercase;
@@ -87,8 +89,10 @@ body {
 table .success_row {
   background-color: #a2ecb6 !important;
 }
-table tr.success_row td {
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
+table .warning_row {
+  background-color: #f0ff99 !important;
+}
+table .danger_row {
+  background-color: #ff9494 !important;
 }
 </style>

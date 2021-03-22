@@ -3,7 +3,6 @@
 namespace Citsk\Controllers;
 
 use Citsk\Exceptions\DataBaseException;
-use Citsk\Library\Shared;
 use Exception;
 
 class ControllerBase
@@ -17,7 +16,7 @@ class ControllerBase
 
         global $ROUTE;
 
-        $action = Shared::toCamelCase($ROUTE['action']);
+        $action = $this->toCamelCase($ROUTE['action']);
 
         //controller methods
         if (method_exists($this, $action)) {
@@ -122,5 +121,28 @@ class ControllerBase
         if ($_SERVER['REQUEST_METHOD'] !== strtoupper($HTTPMethod)) {
             exit(http_response_code(405));
         }
+    }
+
+    /**
+     * @param string $stroke
+     * @param string $delimiter
+     *
+     * @return string
+     */
+    private function toCamelCase(string $stroke, string $delimiter = '-'): string
+    {
+
+        if (!strpos($stroke, $delimiter)) {
+            return $stroke;
+        }
+
+        $result   = null;
+        $tmpArray = explode($delimiter, $stroke);
+
+        for ($i = 0; $i < count($tmpArray); $i++) {
+            $result .= ($i == 0) ? $tmpArray[$i] : ucfirst($tmpArray[$i]);
+        }
+
+        return $result;
     }
 }

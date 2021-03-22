@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 21 2021 г., 19:58
+-- Время создания: Мар 22 2021 г., 13:58
 -- Версия сервера: 10.3.22-MariaDB-log
 -- Версия PHP: 7.4.5
 
@@ -359,13 +359,14 @@ INSERT INTO `questionList` (`id`, `groupId`, `label`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `resultList`
+-- Структура таблицы `scoreList`
 --
 
-CREATE TABLE `resultList` (
+CREATE TABLE `scoreList` (
   `id` int(10) NOT NULL,
-  `resultId` int(10) NOT NULL,
-  `voteId` int(10) NOT NULL
+  `questionId` int(10) NOT NULL,
+  `voteId` int(10) NOT NULL,
+  `score` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -378,7 +379,8 @@ CREATE TABLE `votingList` (
   `id` int(10) NOT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `companyId` int(10) NOT NULL,
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isValid` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -404,17 +406,16 @@ ALTER TABLE `questionList`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `resultList`
+-- Индексы таблицы `scoreList`
 --
-ALTER TABLE `resultList`
+ALTER TABLE `scoreList`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `votingList`
 --
 ALTER TABLE `votingList`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ip` (`ip`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -439,9 +440,9 @@ ALTER TABLE `questionList`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT для таблицы `resultList`
+-- AUTO_INCREMENT для таблицы `scoreList`
 --
-ALTER TABLE `resultList`
+ALTER TABLE `scoreList`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --

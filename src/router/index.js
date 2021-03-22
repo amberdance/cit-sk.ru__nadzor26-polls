@@ -20,6 +20,16 @@ const routes = [
   {
     path: "/home",
     component: () => import("@/views/Home")
+  },
+
+  {
+    path: "/result/:token",
+    component: () => import("@/components/Result")
+  },
+
+  {
+    path: "/thanks",
+    component: () => import("@/components/Thanks")
   }
 ];
 

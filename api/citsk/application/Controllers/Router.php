@@ -29,15 +29,11 @@ final class Router
     public function initializeParameters(): Router
     {
 
-        $params     = explode('/', $_SERVER['REQUEST_URI']);
-        $splitIndex = 3;
-
-        if (count($params) > 4) {
-            $splitIndex = count($params) - 1;
-        }
+        $parts  = parse_url($_SERVER['REQUEST_URI']);
+        $params = explode('/', $parts['path']);
 
         $this->controllerName = $params[2];
-        preg_match("/^([^?]+)(\?.*?)?(#.*)?$/", $params[$splitIndex], $matches);
+        preg_match("/^([^?]+)(\?.*?)?(#.*)?$/", $params[3], $matches);
         $this->requestedAction = $matches[1];
 
         return $this;
@@ -83,7 +79,6 @@ final class Router
         try {
             $this->getControllerName();
             $this->initializeController();
-
         } catch (RouterException $e) {
 
             $params = [
@@ -110,7 +105,6 @@ final class Router
     private function isExistsController(?string $controllerName = null): bool
     {
         return class_exists($controllerName ?? $this->controllerName) ? true : false;
-
     }
 
     /**
@@ -132,7 +126,6 @@ final class Router
 
             $controller->initializeController();
             $controller->callRequestedMethod();
-
         } else {
             throw new RouterException("{$this->controllerName} is not the controller");
         }
