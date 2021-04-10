@@ -31,6 +31,15 @@ final class PollsController extends ControllerBase implements Controllerable
     /**
      * @return void
      */
+    public function getVoteCount(): void
+    {
+
+        $this->successResponse(['count' => $this->model->getVoteCount()]);
+    }
+
+    /**
+     * @return void
+     */
     public function getQuestions(): void
     {
 

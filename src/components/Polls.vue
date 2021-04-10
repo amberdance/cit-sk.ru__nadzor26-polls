@@ -1,6 +1,8 @@
 <template>
   <Main-layout>
     <div v-loading.fullscreen.lock="isLoading" :class="$style.wrapper">
+      <Greetings :vote-count="voteCount" />
+
       <el-form :model="formData" :rules="formRules" ref="form">
         <div :class="$style.step_wrapper">
           <div :class="$style.step">1</div>
@@ -80,11 +82,13 @@
 <script>
 import MainLayout from "@/components/Layouts/MainLayout";
 import QuestionList from "@/components/QuestionList";
+import Greetings from "@/components/Greetings";
 
 export default {
   components: {
     MainLayout,
-    QuestionList
+    QuestionList,
+    Greetings
   },
 
   props: {
@@ -98,6 +102,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      voteCount: 0,
       scoreResult: {},
       filterCompanies: [],
 
@@ -134,6 +139,12 @@ export default {
     try {
       await this.$store.dispatch("loadCompanies");
       await this.$store.dispatch("loadQuestions");
+
+      const { data } = await this.$HTTPGet({
+        route: "/polls/get-vote-count"
+      });
+
+      this.voteCount = data.count;
     } catch (e) {
       console.error(e);
       this.$message.error({ message: e });

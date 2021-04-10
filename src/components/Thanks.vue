@@ -1,6 +1,23 @@
 <template>
   <MainLayout>
-    <div :class="$style.wrapper">{{ title }}</div>
+    <div :class="$style.wrapper">
+      <h1 style="text-align:center;text-transform:uppercase;">
+        Благодарим за участие в опросе!
+      </h1>
+      <div class="text-left">
+        <p>
+          Рейтинг управляющих компаний Ставропольского края будет опубликован на
+          сайте управления Ставропольского края - государственной жилищной
+          инпекции
+          <a href="http://nadzor26.ru" target="_blank">www.nadzor26.ru</a>
+        </p>
+        <p>
+          В настоящее время проводится подведение итогов и формирование
+          рейтинга. Результаты будут опубликованы в ближайшее время. Следите за
+          обновлениями на сайте!
+        </p>
+      </div>
+    </div>
   </MainLayout>
 </template>
 
@@ -18,23 +35,16 @@ export default {
       required: false,
       default: false
     }
-  },
-
-  computed: {
-    title() {
-      return this.isVoted
-        ? "Благодарим за участие в опросе! Ваш голос был учтен"
-        : "Благодарим за участие в опросе!";
-    }
   }
 };
 </script>
 
 <style module>
 .wrapper {
-  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+  background-color: #ffffffd1;
+  padding: 0.5rem;
 }
 </style>

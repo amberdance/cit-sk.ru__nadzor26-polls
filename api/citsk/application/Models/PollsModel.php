@@ -26,6 +26,15 @@ final class PollsModel extends DatabaseModel
     }
 
     /**
+     * @return int
+     */
+    public function getVoteCount(): int
+    {
+
+        return intval($this->setDbTable("votingList")->select("count(id)")->getColumn());
+    }
+
+    /**
      * @return array
      */
     public function getQuestions(): array
