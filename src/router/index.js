@@ -10,11 +10,7 @@ VueRouter.prototype.push = function push(location) {
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "*",
-    component: () => import("@/components/NotFound")
-  },
-
+  { path: "*", redirect: "/home" },
   { path: "/", redirect: "/home" },
 
   {
@@ -25,11 +21,6 @@ const routes = [
   {
     path: "/result/:token",
     component: () => import("@/components/Result")
-  },
-
-  {
-    path: "/thanks",
-    component: () => import("@/components/Thanks")
   }
 ];
 

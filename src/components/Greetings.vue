@@ -6,18 +6,6 @@
       Ваше мнение будет учтено при составлении рейтинга управляющих компаний
       Ставропольского края.
     </p>
-    <div :class="$style.digitWrapper">
-      <p>
-        <span :class="$style.digit">{{ daysLeft }}</span
-        >{{ declinationOfDay }} до окончания опроса
-      </p>
-      <p>
-        <span :class="$style.digit">{{ voteCount }}</span
-        >{{ declOfNum(voteCount, ["человек", "человека", "человек"]) }}
-        {{ declOfNum(voteCount, ["принял", "приняли", "приняло"]) }}
-        участие
-      </p>
-    </div>
   </div>
 </template>
 <script>
