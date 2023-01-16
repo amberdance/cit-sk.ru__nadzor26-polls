@@ -1,15 +1,16 @@
 <template>
   <MainLayout>
     <div :class="$style.wrapper">
-      <h1 style="text-align:center;text-transform:uppercase;">
+      <h1 style="text-align: center; text-transform: uppercase">
         Благодарим за участие в опросе!
       </h1>
       <div class="text-left">
         <p>
-          Опрос по качеству работы управляющих организаций окончен 30 июня 2021 года. Результаты опроса будут опубликованы на сайте управления Ставропольского края - государственной жилищной инспекции.
+          Опрос по качеству работы управляющих организаций окончен
+          {{ END_DATE }}. Результаты опроса будут опубликованы на сайте
+          управления Ставропольского края - государственной жилищной инспекции.
           <a href="http://nadzor26.ru" target="_blank">www.nadzor26.ru</a>
         </p>
-
       </div>
     </div>
   </MainLayout>
@@ -20,16 +21,22 @@ import MainLayout from "@/components/Layouts/MainLayout";
 
 export default {
   components: {
-    MainLayout
+    MainLayout,
   },
 
   props: {
     isVoted: {
       type: Boolean,
       required: false,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
+
+  data() {
+    return {
+      END_DATE: "30 июня 2023 года",
+    };
+  },
 };
 </script>
 
