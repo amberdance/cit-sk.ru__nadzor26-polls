@@ -37,21 +37,21 @@ export default {
   props: {
     scoreResult: {
       type: Object,
-      requred: true
-    }
+      requred: true,
+    },
   },
 
   data() {
     return {
-      colors: ["#99A9BF", "#F7BA2A", "#FF9900"]
+      colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
     };
   },
 
   computed: {
     questions() {
       return this.$store.getters["questions"];
-    }
-  }
+    },
+  },
 };
 </script>
 

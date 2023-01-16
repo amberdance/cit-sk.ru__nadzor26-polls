@@ -27,7 +27,7 @@
               placeholder="ИНН, ОГРН, наименование"
               filterable
               clearable
-              style="width:100%;"
+              style="width: 100%"
               no-data-text="введите ключевые слова"
               no-match-text="ничего не найдено"
               :filter-method="companyFilter"
@@ -88,15 +88,15 @@ export default {
   components: {
     MainLayout,
     QuestionList,
-    Greetings
+    Greetings,
   },
 
   props: {
     isVoted: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
@@ -107,14 +107,14 @@ export default {
       filterCompanies: [],
 
       formData: {
-        companyId: null
+        companyId: null,
       },
 
       formRules: {
         companyId: [
-          { requred: true, message: "не выбрана управляющая компания" }
-        ]
-      }
+          { requred: true, message: "не выбрана управляющая компания" },
+        ],
+      },
     };
   },
 
@@ -128,7 +128,7 @@ export default {
         this.companies.filter(({ id }) => id == this.formData.companyId)[0] ??
         []
       );
-    }
+    },
   },
 
   async created() {
@@ -141,7 +141,7 @@ export default {
       await this.$store.dispatch("loadQuestions");
 
       const { data } = await this.$HTTPGet({
-        route: "/polls/get-vote-count"
+        route: "/polls/get-vote-count",
       });
 
       this.voteCount = data.count;
@@ -162,13 +162,13 @@ export default {
           "Не выставлено ни одного положительного балла, все верно?",
           {
             confirmButtonText: "да",
-            cancelButtonText: "нет"
+            cancelButtonText: "нет",
           }
         );
       else
         await this.$confirm("Все оценки выставлены корректно?", {
           confirmButtonText: "да",
-          cancelButtonText: "нет"
+          cancelButtonText: "нет",
         });
 
       this.isLoading = true;
@@ -178,8 +178,8 @@ export default {
           route: "/polls/vote",
           payload: {
             companyId: Number(this.formData.companyId),
-            scores: this.formatScoreResults()
-          }
+            scores: this.formatScoreResults(),
+          },
         });
 
         this.purge();
@@ -211,7 +211,7 @@ export default {
           questionId: Number(key),
           score: this.scoreResult[key]
             ? this.scoreResult[key] - 1
-            : this.scoreResult[key]
+            : this.scoreResult[key],
         });
       }
 
@@ -224,13 +224,13 @@ export default {
 
     companyFilter(val) {
       return (this.filterCompanies = this.companies.filter(
-        item =>
+        (item) =>
           item.label.toLowerCase().includes(val.toLowerCase()) ||
           item.inn.includes(val) ||
           item.ogrn.includes(val)
       ));
-    }
-  }
+    },
+  },
 };
 </script>
 

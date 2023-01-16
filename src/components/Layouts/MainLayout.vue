@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header style="height: auto; z-index: 999;padding:0;">
+    <el-header style="height: auto; z-index: 999; padding: 0">
       <HeaderLayout />
     </el-header>
 
@@ -17,7 +17,7 @@ import HeaderLayout from "./HeaderLayout";
 
 export default {
   components: {
-    HeaderLayout
-  }
+    HeaderLayout,
+  },
 };
 </script>

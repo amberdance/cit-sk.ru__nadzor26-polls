@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <div class="table_wrapper" v-loading.fullscreen.lock="isLoading">
-      <div style="margin:1rem 0; text-align:center;">
+      <div style="margin: 1rem 0; text-align: center">
         <el-switch
           v-model="isValid"
           active-text="с учетом сегмента РФ"
@@ -35,14 +35,14 @@ import MainLayout from "@/components/Layouts/MainLayout";
 
 export default {
   components: {
-    MainLayout
+    MainLayout,
   },
 
   data() {
     return {
       isLoading: false,
       isValid: true,
-      scoreList: []
+      scoreList: [],
     };
   },
 
@@ -51,7 +51,7 @@ export default {
       return this.scoreList.filter(({ isValid }) =>
         this.isValid ? isValid == "1" : isValid == "0"
       );
-    }
+    },
   },
 
   async created() {
@@ -61,7 +61,7 @@ export default {
       this.scoreList =
         (await this.$HTTPGet({
           route: "/polls/get-result",
-          payload: { token: this.$route.params.token, isValid: this.isValid }
+          payload: { token: this.$route.params.token, isValid: this.isValid },
         })) ?? [];
     } catch (e) {
       this.$router.push("/who-i-am");
@@ -76,7 +76,7 @@ export default {
       else if (Number(row.score) >= 30 && Number(row.score) < 70)
         return "warning_row";
       else if (Number(row.score) >= 70) return "success_row";
-    }
-  }
+    },
+  },
 };
 </script>

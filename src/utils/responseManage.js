@@ -1,38 +1,38 @@
 const errorCollection = {
   HTTP: {
-    500: error => {
+    500: (error) => {
       return Promise.reject(
         `${error.response.status} ${error.response.statusText}`
       );
     },
 
-    413: error => {
+    413: (error) => {
       return Promise.reject(
         `${error.response.status} ${error.response.statusText}`
       );
     },
 
-    405: error => {
+    405: (error) => {
       return Promise.reject({
         error: `${error.response.status} ${error.response.statusText}`,
-        code: 405
+        code: 405,
       });
     },
 
-    404: error => {
+    404: (error) => {
       return Promise.reject({
         error: `${error.response.status} ${error.response.statusText}`,
-        code: 404
+        code: 404,
       });
     },
 
-    403: error => {
+    403: (error) => {
       return Promise.reject(
         `${error.response.status} ${error.response.statusText}`
       );
     },
 
-    401: error => Promise.reject(error)
+    401: (error) => Promise.reject(error),
   },
 
   custom: {
@@ -45,12 +45,12 @@ const errorCollection = {
     102: ({ error }) =>
       Promise.reject({
         error,
-        code: 102
-      })
-  }
+        code: 102,
+      }),
+  },
 };
 
-export const responseManage = response => {
+export const responseManage = (response) => {
   if (typeof response.data == "string") return Promise.resolve(response);
   if ("error" in response.data) return errorManage(response);
   if (Array.isArray(response.data) && !response.data.length) return [];
@@ -65,7 +65,7 @@ export const responseManage = response => {
   return Promise.resolve(response);
 };
 
-export const errorManage = error => {
+export const errorManage = (error) => {
   if ("response" in error) {
     if (error.response.status in errorCollection.HTTP)
       return errorCollection.HTTP[error.response.status](error);

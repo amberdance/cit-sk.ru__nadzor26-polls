@@ -17,5 +17,5 @@ export default {
 
   remove(state, { key, id }) {
     Vue.delete(state[key], id);
-  }
+  },
 };

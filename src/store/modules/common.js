@@ -4,12 +4,12 @@ import commonMutations from "@/store/commonMutations";
 export default {
   state: {
     companies: [],
-    questions: []
+    questions: [],
   },
 
   getters: {
-    companies: state => Object.values(state.companies),
-    questions: state => state.questions
+    companies: (state) => Object.values(state.companies),
+    questions: (state) => state.questions,
   },
 
   mutations: {
@@ -17,7 +17,7 @@ export default {
       state.questions = payload;
     },
 
-    ...commonMutations
+    ...commonMutations,
   },
 
   actions: {
@@ -26,10 +26,10 @@ export default {
 
       const companies = await dispatch.HTTPGet({
         route: "/polls/get-companies",
-        payload
+        payload,
       });
 
-      companies.forEach(property =>
+      companies.forEach((property) =>
         commit("set", { key: "companies", props: property })
       );
     },
@@ -39,9 +39,9 @@ export default {
         "setQuestions",
         await dispatch.HTTPGet({
           route: "/polls/get-questions",
-          payload
+          payload,
         })
       );
-    }
-  }
+    },
+  },
 };

@@ -22,12 +22,12 @@ export default {
   computed: {
     questions() {
       return this.$store.getters["questions"];
-    }
+    },
   },
 
   created() {
     console.log(this.questions.groups);
-  }
+  },
 };
 </script>
 

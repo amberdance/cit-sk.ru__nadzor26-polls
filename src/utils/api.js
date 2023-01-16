@@ -16,7 +16,7 @@ const validateData = async (responseData, payload) => {
   ) {
     return {
       ...payload,
-      id: responseData.data.id || payload.id
+      id: responseData.data.id || payload.id,
     };
   }
 
@@ -43,5 +43,5 @@ export const dispatch = {
     const { data } = await axios.get(route, { params: payload });
 
     return validateData(data, payload);
-  }
+  },
 };

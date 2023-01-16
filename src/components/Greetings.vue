@@ -13,13 +13,13 @@ export default {
   props: {
     voteCount: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
 
   data() {
     return {
-      finalDate: "05.31.2021"
+      finalDate: "05.31.2021",
     };
   },
 
@@ -30,7 +30,7 @@ export default {
 
     daysLeft() {
       return Math.floor((new Date(this.finalDate) - new Date()) / 86400000);
-    }
+    },
   },
 
   methods: {
@@ -42,8 +42,8 @@ export default {
           ? 2
           : cases[number % 10 < 5 ? number % 10 : 5]
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style module>
