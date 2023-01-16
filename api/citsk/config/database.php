@@ -5,6 +5,6 @@ return [
     'port'     => 3306,
     'db_name'  => 'nadzor26_polls',
     'char_set' => 'utf8',
-    'user'     => 'gku_user',
-    'password' => 'a;UG<@Zw/#G6a5qL',
+    'user'     => 'root',
+    'password' => '',
 ];
