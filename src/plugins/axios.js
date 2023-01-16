@@ -3,17 +3,16 @@
 import Vue from "vue";
 import axios from "axios";
 import router from "../router";
-import { API_BASE_URL } from "../config";
 import { responseManage, errorManage } from "../utils/responseManage";
 
-axios.defaults.baseURL = API_BASE_URL;
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
 
 axios.interceptors.response.use(
-  response => responseManage(response),
-  error => errorManage(error)
+  (response) => responseManage(response),
+  (error) => errorManage(error)
 );
 
-Plugin.install = Vue => {
+Plugin.install = (Vue) => {
   Vue.prototype.$isHomePage = () =>
     Boolean(router.history.current.path == "/home");
 
