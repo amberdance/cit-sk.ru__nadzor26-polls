@@ -87,7 +87,7 @@ table .danger_row {
 .table_wrapper th {
   color: #ffffff;
   font-weight: normal;
-  background-color: #23497b !important;
+  background-color: #122050 !important;
   border-right: 1px #ffffff solid;
   padding: 0.6rem 0 !important;
   text-transform: uppercase;
@@ -110,4 +110,13 @@ table .danger_row {
   margin: 0 auto;
   width: 1210px;
   padding: 0px 5px;
+}
+
+/* ---------------------------ADAPTIVE------------------------ */
+@media (max-width: 1200px) {
+
+  .container {
+    width: 100%;
+    padding: 0;
+  }
 }
