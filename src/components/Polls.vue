@@ -8,14 +8,6 @@
           <div :class="$style.step_wrapper">
             <div :class="$style.step">1</div>
             <div>Выберите управляющую компанию</div>
-
-            <transition name="el-fade-in-linear">
-              <div v-if="formData.companyId" :class="$style.vote">
-                <el-button type="primary" size="small" @click="vote"
-                  >проголосовать</el-button
-                >
-              </div>
-            </transition>
           </div>
 
           <div :class="$style.inner">
@@ -76,6 +68,14 @@
               <div :class="$style.inner">
                 <QuestionList :scoreResult="scoreResult" />
               </div>
+            </div>
+          </transition>
+
+          <transition name="el-fade-in-linear">
+            <div v-if="formData.companyId" :class="$style.vote">
+              <el-button type="primary" size="small" @click="vote"
+                >проголосовать</el-button
+              >
             </div>
           </transition>
         </el-form>
@@ -284,11 +284,6 @@ export default {
 .companyDescription span:first-child {
   margin-right: 0.5rem;
   color: gray;
-}
-.vote {
-  position: fixed;
-  z-index: 999;
-  right: 2%;
 }
 
 .el-form-item__label {
