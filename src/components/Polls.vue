@@ -1,80 +1,85 @@
 <template>
   <Main-layout>
-    <div v-loading.fullscreen.lock="isLoading" :class="$style.wrapper">
-      <Greetings :vote-count="voteCount" />
+    <div class="container">
+      <div v-loading.fullscreen.lock="isLoading" :class="$style.wrapper">
+        <Greetings :vote-count="voteCount" />
 
-      <el-form :model="formData" :rules="formRules" ref="form">
-        <div :class="$style.step_wrapper">
-          <div :class="$style.step">1</div>
-          <div>Выберите управляющую компанию</div>
+        <el-form :model="formData" :rules="formRules" ref="form">
+          <div :class="$style.step_wrapper">
+            <div :class="$style.step">1</div>
+            <div>Выберите управляющую компанию</div>
 
-          <transition name="el-fade-in-linear">
-            <div v-if="formData.companyId" :class="$style.vote">
-              <el-button type="primary" size="small" @click="vote"
-                >проголосовать</el-button
-              >
-            </div>
-          </transition>
-        </div>
-
-        <div :class="$style.inner">
-          <el-form-item
-            label="Наименование управляющей компании:"
-            prop="companyId"
-          >
-            <el-select
-              v-model="formData.companyId"
-              placeholder="ИНН, ОГРН, наименование"
-              filterable
-              clearable
-              style="width: 100%"
-              no-data-text="введите ключевые слова"
-              no-match-text="ничего не найдено"
-              :filter-method="companyFilter"
-              @clear="filterCompanies = []"
-            >
-              <el-option
-                v-for="item in filterCompanies"
-                :label="item.label"
-                :value="item.id"
-                :key="item.id"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-
-          <transition name="el-fade-in-linear">
-            <div v-show="selectedCompany.id" :class="$style.companyDescription">
-              <div>
-                <span>Наименование:</span
-                ><span>{{ selectedCompany.label }}</span>
+            <transition name="el-fade-in-linear">
+              <div v-if="formData.companyId" :class="$style.vote">
+                <el-button type="primary" size="small" @click="vote"
+                  >проголосовать</el-button
+                >
               </div>
-              <div>
-                <span>Юридический адрес:</span
-                ><span>{{ selectedCompany.address }}</span>
-              </div>
-              <div>
-                <span>ИНН:</span><span>{{ selectedCompany.inn }}</span>
-              </div>
-              <div>
-                <span>ОГРН:</span><span>{{ selectedCompany.ogrn }}</span>
-              </div>
-            </div>
-          </transition>
-        </div>
-
-        <transition name="el-fade-in-linear">
-          <div v-show="formData.companyId">
-            <div :class="$style.step_wrapper">
-              <div :class="$style.step">2</div>
-              <div>Ответьте на вопросы</div>
-            </div>
-
-            <div :class="$style.inner">
-              <QuestionList :scoreResult="scoreResult" />
-            </div>
+            </transition>
           </div>
-        </transition>
-      </el-form>
+
+          <div :class="$style.inner">
+            <el-form-item
+              label="Наименование управляющей компании:"
+              prop="companyId"
+            >
+              <el-select
+                v-model="formData.companyId"
+                placeholder="ИНН, ОГРН, наименование"
+                filterable
+                clearable
+                style="width: 100%"
+                no-data-text="введите ключевые слова"
+                no-match-text="ничего не найдено"
+                :filter-method="companyFilter"
+                @clear="filterCompanies = []"
+              >
+                <el-option
+                  v-for="item in filterCompanies"
+                  :label="item.label"
+                  :value="item.id"
+                  :key="item.id"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+
+            <transition name="el-fade-in-linear">
+              <div
+                v-show="selectedCompany.id"
+                :class="$style.companyDescription"
+              >
+                <div>
+                  <span>Наименование:</span
+                  ><span>{{ selectedCompany.label }}</span>
+                </div>
+                <div>
+                  <span>Юридический адрес:</span
+                  ><span>{{ selectedCompany.address }}</span>
+                </div>
+                <div>
+                  <span>ИНН:</span><span>{{ selectedCompany.inn }}</span>
+                </div>
+                <div>
+                  <span>ОГРН:</span><span>{{ selectedCompany.ogrn }}</span>
+                </div>
+              </div>
+            </transition>
+          </div>
+
+          <transition name="el-fade-in-linear">
+            <div v-show="formData.companyId">
+              <div :class="$style.step_wrapper">
+                <div :class="$style.step">2</div>
+                <div>Ответьте на вопросы</div>
+              </div>
+
+              <div :class="$style.inner">
+                <QuestionList :scoreResult="scoreResult" />
+              </div>
+            </div>
+          </transition>
+        </el-form>
+      </div>
     </div>
   </Main-layout>
 </template>
@@ -236,7 +241,7 @@ export default {
 
 <style module>
 .wrapper {
-  background-color: #ffffff2e;
+  background-color: #ffffff;
   min-height: 100%;
   padding: 1rem;
   border: 1px #efefef solid;
@@ -262,12 +267,14 @@ export default {
 }
 .inner {
   display: flex;
+  align-items: flex-start;
 }
 .inner select,
 .inner input {
   width: 100% !important;
 }
 .companyDescription {
+  padding-top: 11px;
   margin-left: 1rem;
   font-size: 14px;
 }
@@ -282,5 +289,9 @@ export default {
   position: fixed;
   z-index: 999;
   right: 2%;
+}
+
+.el-form-item__label {
+  padding: 0 !important;
 }
 </style>

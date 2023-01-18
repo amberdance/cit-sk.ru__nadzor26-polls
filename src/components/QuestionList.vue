@@ -59,15 +59,11 @@ export default {
 .group_wrapper {
   margin-bottom: 1rem;
 }
-.item_wrapper {
-  padding: 0 1rem;
-}
 .heading {
-  text-transform: uppercase;
   padding: 1rem 0;
   margin: 1rem 0;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 700;
   border-bottom: 1px solid #dadada;
 }
 .question {

@@ -1,11 +1,13 @@
 <template>
   <div :class="$style.wrapper">
-    <h1>Уважаемые жители многоквартирных домов!</h1>
-    <p>Просим оценить работу вашей управляющей компании по 20 критериям.</p>
-    <p>
-      Ваше мнение будет учтено при составлении рейтинга управляющих компаний
-      Ставропольского края.
-    </p>
+    <div class="container">
+      <h1>Уважаемые жители многоквартирных домов!</h1>
+      <p>
+        Просим оценить работу вашей управляющей компании по 20 критериям. Ваше
+        мнение будет учтено при составлении рейтинга управляющих компаний
+        Ставропольского края.
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -51,9 +53,12 @@ export default {
   background-color: #ffffffd1;
   text-align: center;
   padding: 0.5rem 0;
+  border: 2px solid #cf0000;
 }
-.wrapper h1 {
-  text-transform: uppercase;
+.wrapper p {
+  margin: 0 auto;
+  padding-top: 1rem;
+  max-width: 500px;
 }
 .digitWrapper {
   display: flex;
