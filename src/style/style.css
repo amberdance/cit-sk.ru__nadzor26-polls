@@ -37,7 +37,7 @@ table .danger_row {
   background-image: url("../assets/background.png");
   background-repeat: no-repeat;
   background-position: right;
-  height: 100vh;
+  height: calc(100vh - 96px);
   background-attachment: fixed;
   padding: 0 !important;
 }
