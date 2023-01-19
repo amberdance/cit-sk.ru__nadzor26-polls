@@ -21,7 +21,7 @@ export default {
 
   data() {
     return {
-      finalDate: "05.31.2021",
+      FINAL_DATE: "05.31.2021",
     };
   },
 
@@ -31,7 +31,7 @@ export default {
     },
 
     daysLeft() {
-      return Math.floor((new Date(this.finalDate) - new Date()) / 86400000);
+      return Math.floor((new Date(this.FINAL_DATE) - new Date()) / 86400000);
     },
   },
 

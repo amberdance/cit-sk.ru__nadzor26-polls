@@ -1,18 +1,12 @@
 <template>
   <div>
-    <div
-      v-for="item in questions"
-      :key="item.group.id"
-      :class="$style.group_wrapper"
-    >
-      <div :class="$style.heading">
-        {{ item.group.id }}: {{ item.group.label }}:
-      </div>
+    <div v-for="item in questions" :key="item.group.id" class="group_wrapper">
+      <div class="heading">{{ item.group.id }}: {{ item.group.label }}:</div>
 
       <div
         v-for="question in item.questions"
         :key="question.id"
-        :class="$style.question"
+        class="question"
       >
         <div>{{ question.label }}</div>
         <div>
@@ -21,7 +15,7 @@
             show-text
             :max="6"
             :colors="colors"
-            :class="$style.item_wrapper"
+            class="item_wrapper"
             :texts="['0', '1', '2', '3', '4', '5']"
             score-template="{value:asdasd}"
           >
@@ -55,21 +49,28 @@ export default {
 };
 </script>
 
-<style module>
+<style scope>
 .group_wrapper {
   margin-bottom: 1rem;
 }
-.heading {
+
+.group_wrapper .heading {
   padding: 1rem 0;
   margin: 1rem 0;
   font-size: 20px;
   font-weight: 700;
   border-bottom: 1px solid #dadada;
 }
+
 .question {
   margin: 1rem 0;
 }
+
 .question div:first-child {
   margin-bottom: 1rem;
+}
+
+.el-rate__icon {
+  font-size: 30px;
 }
 </style>

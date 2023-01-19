@@ -73,9 +73,7 @@
 
           <transition name="el-fade-in-linear">
             <div v-if="formData.companyId" :class="$style.vote">
-              <el-button type="primary" size="small" @click="vote"
-                >проголосовать</el-button
-              >
+              <el-button type="success" @click="vote">Проголосовать</el-button>
             </div>
           </transition>
         </el-form>
@@ -247,6 +245,7 @@ export default {
   border: 1px #efefef solid;
   box-shadow: 1px 1px 5px 3px #8080800f;
 }
+
 .step_wrapper {
   display: flex;
   align-items: center;
@@ -254,6 +253,7 @@ export default {
   margin: 2rem 0;
   padding: 1rem 0;
 }
+
 .step {
   display: flex;
   align-items: center;
@@ -265,22 +265,27 @@ export default {
   font-size: 18px;
   margin-right: 0.5rem;
 }
+
 .inner {
   display: flex;
   align-items: flex-start;
 }
+
 .inner select,
 .inner input {
   width: 100% !important;
 }
+
 .companyDescription {
   padding-top: 11px;
   margin-left: 1rem;
   font-size: 14px;
 }
+
 .companyDescription div {
   margin-bottom: 0.5rem;
 }
+
 .companyDescription span:first-child {
   margin-right: 0.5rem;
   color: gray;
@@ -288,5 +293,10 @@ export default {
 
 .el-form-item__label {
   padding: 0 !important;
+}
+
+.vote {
+  text-align: center;
+  margin: 1rem 0;
 }
 </style>

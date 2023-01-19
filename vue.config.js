@@ -1,5 +1,6 @@
 process.env.VUE_APP_VERSION = require("./package.json").version;
 process.env.VUE_APP_TITLE = "Рейтинг управляющих компаний";
+process.env.VUE_APP_URL = "https://nadzor26.ru";
 process.env.VUE_APP_API_URL =
   process.env.NODE_ENV == "development"
     ? "http://nadzor26-polls/api"

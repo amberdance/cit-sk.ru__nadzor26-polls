@@ -9,7 +9,7 @@
             {{ END_DATE }}. Результаты опроса будут опубликованы на сайте
             управления Ставропольского края - государственной жилищной
             инспекции.
-            <a href="http://nadzor26.ru" target="_blank">www.nadzor26.ru</a>
+            <a :href="APP_URL" target="_blank">{{ APP_URL }}</a>
           </p>
         </div>
       </div>
@@ -35,6 +35,7 @@ export default {
 
   data() {
     return {
+      APP_URL: process.env.VUE_APP_URL,
       END_DATE: "30 июня 2023 года",
     };
   },
